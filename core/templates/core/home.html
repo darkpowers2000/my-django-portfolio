@@ -1,0 +1,28 @@
+{% load static %} <!DOCTYPE html>
+<html>
+<head>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<body>
+    <h1>Welcome to my Freelance Python Portfolio</h1>
+    <p>This page is being loaded from a real HTML template with CSS!</p>
+    <ul>
+        {% for service in services %}
+            <li>
+                <strong>{{ service.title }}</strong><br>
+                {{ service.description }}
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+<h2>Contact Me</h2>
+<form method="POST">
+    {% csrf_token %} <p><input type="text" name="name" placeholder="Your Name" required></p>
+    <p><input type="email" name="email" placeholder="Your Email" required></p>
+    <p><input type="text" name="subject" placeholder="Subject" required></p>
+    <p><textarea name="message" placeholder="Your Message" required></textarea></p>
+    <button type="submit">Send Message</button>
+</form>
+</body>
+</html>
