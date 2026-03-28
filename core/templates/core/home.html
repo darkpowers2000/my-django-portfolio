@@ -9,9 +9,15 @@
     <p>This page is being loaded from a real HTML template with CSS!</p>
     <ul>
         {% for service in services %}
-            <li>
-                <strong>{{ service.title }}</strong><br>
-                {{ service.description }}
+            <li style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">
+                {% if service.image %}
+                    <img src="{{ service.image.url }}" alt="{{ service.title }}" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                {% endif %}
+
+                <div>
+                    <strong style="font-size: 1.2em;">{{ service.title }}</strong><br>
+                    {{ service.description }}
+                </div>
             </li>
         {% endfor %}
     </ul>
