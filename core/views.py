@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Service, ContactMessage
+from .models import Service, ContactMessage, AboutMe
 
 def home(request):
     services = Service.objects.all()
-    
+    about = AboutMe.objects.first()
+
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -15,4 +16,4 @@ def home(request):
         )
         return redirect('home')
 
-    return render(request, 'core/home.html', {'services': services})
+    return render(request, 'core/home.html', {'services': services, 'about': about})

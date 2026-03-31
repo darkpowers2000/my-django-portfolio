@@ -17,3 +17,17 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
+
+class AboutMe(models.Model):
+    name = models.CharField(max_length=100)
+    tagline = models.CharField(max_length=200, help_text="Example: Python Automation Expert")
+    profile_picture = models.ImageField(upload_to='profile/', null=True, blank=True)
+    bio = models.TextField()
+    github_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = "About Me"
+
+    def __str__(self):
+        return self.name
