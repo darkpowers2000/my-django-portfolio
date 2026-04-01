@@ -31,3 +31,15 @@ class AboutMe(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    thumbnail = models.ImageField(upload_to='projects/')
+    description = models.TextField(help_text="A brief overview of the project.")
+    problem_statement = models.TextField(help_text="What business problem were you solving?")
+    solution_details = models.TextField(help_text="How did you use Python/Django to solve it?")
+    result_roi = models.TextField(help_text="What was the final outcome or time saved?")
+    github_link = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.title
