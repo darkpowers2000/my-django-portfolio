@@ -48,110 +48,43 @@
     <hr style="border: 0; height: 1px; background: #eee; margin: 40px 0;">
 
     <h2>Featured Projects</h2>
-    <div class="projects-grid">
+    <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0; margin-bottom: 40px;">
 
-        <div class="project-card">
-            <h3>Automated Competitor Price Monitor</h3>
-            <p>Real-time data scraping system optimized to trace product valuation changes across target ecommerce storefront architectures.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Retail businesses lose sales margins by failing to react rapidly when competitors drop prices on high-volume catalog items.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Developed background tracking scripts to monitor target item listings and flag price changes automatically.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Enabled dynamic strategy adjustments that protected client conversion metrics across key retail segments.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
+        {% for project in projects %}
+            <div class="project-card" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    {% if project.thumbnail %}
+                        <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 6px; margin-bottom: 15px; background: #eee;">
+                            <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    {% endif %}
 
-        <div class="project-card">
-            <h3>Real Estate B2B Data Extraction Pipeline</h3>
-            <p>High-speed automation system built to harvest real estate leads from directory networks.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Independent real estate brokerages were losing 15+ hours every single week looking through public directories and copying contact details by hand into spreadsheets.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Engineered a modular Python workflow leveraging BeautifulSoup and Requests to safely query directory engines, bypass structured tables, normalize cell strings, and auto-output optimized CSV schemas.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Saved the client 15 hours per week of manual data entry while immediately populating their marketing pipeline with 1,200 verified targets.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
+                    <h3 style="margin-top: 0; color: #333;">
+                        <a href="{% url 'project_detail' project.pk %}" style="text-decoration: none; color: #333;">{{ project.title }}</a>
+                    </h3>
+                    <p style="color: #666; font-size: 0.95em; line-height: 1.5;">{{ project.description }}</p>
+                    
+                    <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 15px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
+                        <p style="margin: 4px 0;"><strong>Problem:</strong> {{ project.problem_statement }}</p>
+                        <p style="margin: 4px 0;"><strong>Solution:</strong> {{ project.solution_details }}</p>
+                        <p style="margin: 4px 0;"><strong>Result:</strong> {{ project.result_roi }}</p>
+                    </div>
+                </div>
 
-        <div class="project-card">
-            <h3>High-Performance Django SaaS Billing Engine</h3>
-            <p>Scale-ready user management backend designed to process digital application fees.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> A bootstrap software startup needed a reliable way to authenticate monthly product users and handle secure transaction sessions without introducing heavy third-party framework overhead.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Set up an absolute core MVC structure using Django Models, custom routing views, user-permission layers, and webhooks processing listeners using standard security parameters.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Decreased overall user dropout tracking by 22% during account balance sync adjustments.</p>
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    {% if project.github_link %}
+                        <a href="{{ project.github_link }}" target="_blank" class="case-study-link" style="font-weight: bold; text-decoration: none; color: #007acc; font-size: 0.9em;">View GitHub Repository →</a>
+                    {% endif %}
+                    <a href="{% url 'project_detail' project.pk %}" style="font-size: 0.9em; color: #555; text-decoration: none; border: 1px solid #ccc; padding: 4px 8px; border-radius: 4px; background: #fff;">Details</a>
+                </div>
             </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Public Directory Lead Extraction Platform</h3>
-            <p>Targeted scraping asset designed to gather corporate leadership contacts.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Agency client management systems were constantly starved for clean company email and telephone endpoints to pitch high-ticket consulting infrastructure solutions.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Implemented clean data extraction loops inside specialized python parsing functions, automatically dropping blank data frames or corrupt layout characters.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Created a clean database containing over 5,000 highly targeted B2B contact rows, increasing cold outreach deliverability metrics by 40%.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Cron-Scheduled Automated Report Engine</h3>
-            <p>Server-side scheduler designed to build daily operational business briefs.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Management teams regularly forgot to gather daily inventory database outputs manually, resulting in inaccurate reporting patterns across fulfillment pipelines.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Designed a system to automatically format complex dataset components into structured CSV/JSON file matrix streams, running continuously via backend job queues.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Completely removed human dependencies from internal performance reporting workflows, providing stakeholders with clean data at 6:00 AM daily.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Customer Review Analysis Engine</h3>
-            <p>Automated text parser parsing market consumer feedback logs.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Product manufacturers received thousands of unstructured global product descriptions weekly, rendering deep analysis impossible via basic team review.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Formed structured internal pipelines using Python parsing engines to organize target arrays into clean categorical datasets.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Accelerated corporate processing loops, flagging product tracking defects in under 2 hours.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Secure Document Retrieval Automated Broker</h3>
-            <p>Automated utility built to fetch secure portal asset documents.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Financial advisors had to log in across individual distinct provider portals manually every afternoon to pull required compliance updates.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Configured custom automated scripts using browser profiles to access portals, pass authentication inputs safely, look for newly dropped statement URLs, and download raw objects.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Entirely automated a tedious admin task, saving 8 business operational hours every single week.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Broken Link & Technical Audit Crawler</h3>
-            <p>Multi-threaded indexing engine built to monitor external platform stability metrics.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Large publishing houses suffered SEO page authority drops due to unexpected broken outbound URLs hidden inside deep article records.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Programmed a high-performance Python application capable of crawling deep domain maps recursively to test responsive network header signals (like 200 OK vs 404 Not Found).</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Audited 10,000 links in under 4 minutes, surfacing dead routes instantly to preserve core web visibility scores.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>Legacy Database Migration Broker</h3>
-            <p>Data mapping mechanism built to move tabular elements securely.</p>
-            <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 10px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                <p style="margin: 4px 0;"><strong>Problem:</strong> Businesses upgrading their tech infrastructure struggled to migrate raw client data safely from unformatted spreadsheets into normalized transactional databases.</p>
-                <p style="margin: 4px 0;"><strong>Solution:</strong> Created automated mapping utility scripts to inspect input entries, format date configurations cleanly, clean up user field errors, and safely insert entries into relational schemas.</p>
-                <p style="margin: 4px 0;"><strong>Result:</strong> Handled thousands of production customer entries smoothly with zero records dropped or corrupted.</p>
-            </div>
-            <a href="https://github.com/darkpowers2000/my-django-portfolio" target="_blank" class="case-study-link" style="display: inline-block; margin-top: 5px; font-weight: bold; text-decoration: none; color: #007acc;">View GitHub Repository →</a>
-        </div>
+        {% empty %}
+            <p style="grid-column: 1 / -1; text-align: center; color: #888; font-style: italic;">No projects found. Add your case studies in the Django Admin panel!</p>
+        {% endfor %}
 
     </div>
     
-    <hr>
+    <hr style="border: 0; height: 1px; background: #eee; margin: 40px 0;">
 
     <h2>Contact Me</h2>
     <form method="POST">
