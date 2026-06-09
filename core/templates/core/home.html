@@ -53,11 +53,30 @@
         {% for project in projects %}
             <div class="project-card" style="background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
-                    {% if project.thumbnail %}
-                        <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 6px; margin-bottom: 15px; background: #eee;">
-                            <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                    {% endif %}
+                    
+                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 6px; margin-bottom: 15px; background: #eee;">
+                        {% if project.title == "Automated Competitor Price Monitor" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_164518.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Real Estate B2B Data Extraction Pipeline" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_163536.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "High-Performance Django SaaS Billing Engine" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_163921.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Public Directory Lead Extraction Platform" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_170731.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Cron-Scheduled Automated Report Engine" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_174020.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Customer Review Analysis Engine" %}
+                            <img src="{% static 'core/Screenshot_2026-06-04_200825.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Secure Document Retrieval Automated Broker" %}
+                            <img src="{% static 'core/Screenshot_2026-06-05_124929.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Broken Link & Technical Audit Crawler" %}
+                            <img src="{% static 'core/Screenshot_2026-06-05_130003.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% elif project.title == "Legacy Database Migration Broker" %}
+                            <img src="{% static 'core/Screenshot_2026-06-05_131953.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'core/project-placeholder.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% endif %}
+                    </div>
 
                     <h3 style="margin-top: 0; color: #333;">
                         <a href="{% url 'project_detail' project.pk %}" style="text-decoration: none; color: #333;">{{ project.title }}</a>
