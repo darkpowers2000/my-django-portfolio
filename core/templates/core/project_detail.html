@@ -11,9 +11,29 @@
     
     <h1 style="margin-top: 20px;">{{ project.title }}</h1>
     
-    {% if project.thumbnail %}
-        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 30px;">
-    {% endif %}
+    <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 12px; margin-bottom: 30px; background: #eee;">
+        {% if project.title == "Automated Competitor Price Tracker" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_164518.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Real Estate B2B Data Extraction Pipeline" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_163536.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "High-Performance Django SaaS Billing Engine" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_163921.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Public Directory Lead Extraction Platform" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_170731.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Cron-Scheduled Automated Report Engine" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_174020.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Customer Review Analysis Engine" %}
+            <img src="{% static 'core/Screenshot_2026-06-04_200825.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Secure Document Retrieval Automated Broker" %}
+            <img src="{% static 'core/Screenshot_2026-06-05_124929.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Broken Link & Technical Audit Crawler" %}
+            <img src="{% static 'core/Screenshot_2026-06-05_130003.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% elif project.title == "Legacy Database Migration Broker" %}
+            <img src="{% static 'core/Screenshot_2026-06-05_131953.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% else %}
+            <img src="{% static 'core/project-placeholder.png' %}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        {% endif %}
+    </div>
 
     <div style="background: #f9f9f9; padding: 30px; border-radius: 12px; border-left: 5px solid #007bff;">
         <h2 style="margin-top: 0;">The Challenge</h2>
