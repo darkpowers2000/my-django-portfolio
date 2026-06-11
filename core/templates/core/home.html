@@ -81,20 +81,11 @@
                     <h3 style="margin-top: 0; color: #333;">
                         <a href="{% url 'project_detail' project.pk %}" style="text-decoration: none; color: #333;">{{ project.title }}</a>
                     </h3>
-                    <p style="color: #666; font-size: 0.95em; line-height: 1.5;">{{ project.description }}</p>
-                    
-                    <div class="case-study-details" style="background: #fafafa; padding: 12px; border-radius: 6px; margin: 15px 0; font-size: 0.9em; border-left: 3px solid #007acc;">
-                        <p style="margin: 4px 0;"><strong>Problem:</strong> {{ project.problem_statement }}</p>
-                        <p style="margin: 4px 0;"><strong>Solution:</strong> {{ project.solution_details }}</p>
-                        <p style="margin: 4px 0;"><strong>Result:</strong> {{ project.result_roi }}</p>
-                    </div>
+                    <p style="color: #666; font-size: 0.95em; line-height: 1.5; margin-bottom: 20px;">{{ project.description }}</p>
                 </div>
 
-                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    {% if project.github_link %}
-                        <a href="{{ project.github_link }}" target="_blank" class="case-study-link" style="font-weight: bold; text-decoration: none; color: #007acc; font-size: 0.9em;">View GitHub Repository →</a>
-                    {% endif %}
-                    <a href="{% url 'project_detail' project.pk %}" style="font-size: 0.9em; color: #555; text-decoration: none; border: 1px solid #ccc; padding: 4px 8px; border-radius: 4px; background: #fff;">Details</a>
+                <div style="margin-top: auto; display: flex; justify-content: flex-start; align-items: center;">
+                    <a href="{% url 'project_detail' project.pk %}" class="case-study-link" style="font-weight: bold; text-decoration: none; color: #007acc; font-size: 0.95em;">View Case Study →</a>
                 </div>
             </div>
         {% empty %}
